@@ -1,11 +1,20 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { router, usePathname } from 'expo-router';
 
 export default function Header() {
+  const pathname = usePathname();
+
   return (
     <View style={styles.container}>
       
       {/* Botão voltar */}
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => {
+        if (pathname.includes('sinistro')) {
+          router.replace('/confinamento');
+        } else {
+          router.back();
+        }
+      }}>
         <Text style={styles.back}>{'<'}</Text>
       </TouchableOpacity>
 
