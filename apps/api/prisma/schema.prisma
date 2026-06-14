@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Sinistro {
+  id        String   @id @default(uuid())
+  foto      String?
+  tipo      String
+  trecho    String
+  descricao String?
+  criadoEm  DateTime @default(now())
+}
+
+model Confinamento {
+  id          String   @id @default(uuid())
+  foto        String?
+  latitude    String?
+  longitude   String?
+  observacoes String?
+  criadoEm    DateTime @default(now())
+}

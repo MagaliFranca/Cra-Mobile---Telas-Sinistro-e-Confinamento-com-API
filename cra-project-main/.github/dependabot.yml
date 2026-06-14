@@ -1,0 +1,17 @@
+version: 2
+updates:
+  # Monitora as dependências do nosso monorepo (Node.js / pnpm)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+
+  # Monitora as atualizações das Actions nos workflows de CI/CD
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "ci"
