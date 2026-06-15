@@ -1,17 +1,18 @@
 version: '3.8'
 
 services:
-  postgres:
-    image: postgres:15
-    container_name: cra_postgres
+  postgres-db:
+    image: postgis/postgis:15-3.3
+    container_name: cra-postgres-postgis
     environment:
-      POSTGRES_USER: cra_user
-      POSTGRES_PASSWORD: cra_pass
-      POSTGRES_DB: cra_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: cra_password
+      POSTGRES_DB: cra_recife_ambiental
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - cra_postgres_data:/var/lib/postgresql/data
+    restart: always
 
 volumes:
-  postgres_data:
+  cra_postgres_data:
