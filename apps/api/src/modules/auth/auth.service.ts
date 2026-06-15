@@ -1,17 +1,17 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 const USUARIOS_EXEMPLO = [
-  { matricula: '12345', senha: '1234', nome: 'Usuário Teste' },
+  { matricula: '1234', nome: 'Usuário Teste' },
 ];
 
 @Injectable()
 export class AuthService {
-  async login(matricula: string, senha: string) {
+  async login(matricula: string) {
     const usuario = USUARIOS_EXEMPLO.find(
-      (u) => u.matricula === matricula && u.senha === senha,
+      (u) => u.matricula === matricula,
     );
     if (!usuario) {
-      throw new UnauthorizedException('Matrícula ou senha incorretos');
+      throw new UnauthorizedException('Matrícula incorreta');
     }
     return { sucesso: true, nome: usuario.nome, matricula: usuario.matricula };
   }
