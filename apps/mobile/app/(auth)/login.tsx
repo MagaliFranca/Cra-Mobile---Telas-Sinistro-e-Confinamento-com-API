@@ -24,7 +24,7 @@ export default function Login() {
     setLoading(true);
     try {
       await api.auth.login(matricula);
-      router.replace('/confinamento');
+      router.replace('/dashboard');
     } catch {
       alert('Matrícula incorreta.');
     } finally {
